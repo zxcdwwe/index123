@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ajax = new XMLHttpRequest();
+        ajax.open('get','http://10.31.163.74/day21_php/taobao.php',true);
+        ajax.send();
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState === 4){
+                // console.log(JSON.parse(ajax.responseText));
+                let arr = JSON.parse(ajax.responseText);
+                let str = '';
+                for(let value of arr){
+                    str += '<img src = "'+value.url+'">';
+                }
+                document.body.innerHTML = str;
+            }
+        }
+
+    </script>
+</body>
+</html>
